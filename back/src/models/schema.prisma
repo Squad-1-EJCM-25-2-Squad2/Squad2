@@ -12,3 +12,165 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int       @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String    @unique
+  hash      String
+  salt      String
+  gender    String?
+  cellphone String?
+  birthDate DateTime?
+
+  Ratings   Rates[]
+  Favorites Favorites[]
+  Orders    Orders[]
+  Cart      Cart[]
+}
+
+model Announce {
+  id          Int     @id @default(autoincrement())
+  description String
+  price       Decimal
+  image       String
+
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+
+  idCategory Int
+  category   Category @relation(fields: [idCategory], references: [id])
+
+  Ratings  Rates[]
+  Favorite Favorites[]
+  Cart     Cart[]
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  Announce Announce[]
+}
+
+model Cart {
+  id              Int     @id @default(autoincrement())
+  totalValor      Decimal
+  productQuantity Int
+
+  userId     Int
+  Users      User      @relation(fields: [userId], references: [id])
+  Announce   Announce? @relation(fields: [announceId], references: [id])
+  announceId Int?
+  Orders     Orders[]
+}
+
+model Rates {
+  id   Int     @id @default(autoincrement())
+  rate Decimal
+
+  idUser Int
+  user   User @relation(fields: [idUser], references: [id])
+
+  announceId Int
+  Announce   Announce @relation(fields: [announceId], references: [id])
+}
+
+model Favorites {
+  id         Int       @id @default(autoincrement())
+  User       User?     @relation(fields: [userId], references: [id])
+  userId     Int?
+  Announce   Announce? @relation(fields: [announceId], references: [id])
+  announceId Int?
+
+  @@unique([userId, announceId])
+}
+
+model Product {
+  id       Int     @id @default(autoincrement())
+  name     String
+  quantity Int
+  color    String
+  sexModel String?
+
+  sizeId   Int
+  size     Size       @relation(fields: [sizeId], references: [id])
+  Announce Announce[]
+}
+
+model Size {
+  id      Int       @id @default(autoincrement())
+  size    String    @unique
+  Product Product[]
+}
+
+model Orders {
+  id   Int       @id @default(autoincrement())
+  data DateTime?
+
+  cartId Int
+  cart   Cart @relation(fields: [cartId], references: [id])
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  personalInfoId Int          @unique
+  info           PersonalInfo @relation(fields: [personalInfoId], references: [id])
+
+  addressId Int     @unique
+  address   Address @relation(fields: [addressId], references: [id])
+
+  deliveryMethodId Int            @unique
+  deliveryMethod   DeliveryMethod @relation(fields: [deliveryMethodId], references: [id])
+
+  paymentId Int     @unique
+  payment   Payment @relation(fields: [paymentId], references: [id])
+}
+
+// Models de Relação com Order
+
+model PersonalInfo {
+  id        Int    @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String
+  cellphone String
+
+  Order Orders?
+}
+
+model Address {
+  id         Int     @id @default(autoincrement())
+  address    String
+  complement String?
+  city       String
+  state      String
+  zip        String
+
+  Order Orders?
+}
+
+model DeliveryMethod {
+  id            Int     @id @default(autoincrement())
+  type          String
+  estimatedTime String
+  price         Decimal
+
+  ordersId Int
+  Order    Orders?
+}
+
+enum DeliveryOptions {
+  Standard
+  Express
+  Overnight
+}
+
+model Payment {
+  id         Int    @id @default(autoincrement())
+  cardNumber String
+  personName String
+
+  Order Orders?
+}
