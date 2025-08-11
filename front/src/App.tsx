@@ -1,7 +1,10 @@
-function App() {
+import Formulario from "./pages/Formulario";
 
+function App() {
   return (
-    <p>My project</p>
+    <div>
+      <Formulario />
+    </div>
   );
 }
 
