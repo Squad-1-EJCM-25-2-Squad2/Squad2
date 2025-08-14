@@ -1,3 +1,6 @@
+.env
+id_rsa_priv.pem
+
 node_modules/
     .DS_Store
     *.sqlite
@@ -5,5 +8,5 @@ node_modules/
     *.jpg
     .env
     .idea
-    id_rsa_priv.pem
+ 
     
