@@ -1,5 +1,5 @@
 .env
-id_rsa_priv
+id_rsa_priv.pem
 
 node_modules/
     .DS_Store
