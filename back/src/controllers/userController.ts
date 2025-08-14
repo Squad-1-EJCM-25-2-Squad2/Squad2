@@ -93,7 +93,7 @@ export class UserController{
                 },
             });
 
-            response.status(204)
+            response.status(204).json(deletedUser);
         } 
         catch (erro: any) {
 
