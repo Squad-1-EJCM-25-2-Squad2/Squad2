@@ -1,4 +1,5 @@
 import {PrismaClient,Prisma} from "@prisma/client"
+import { create } from "domain";
 import { Request,Response } from "express";
 import { connect } from "http2";
 
@@ -9,14 +10,18 @@ export class ProductController{
     public static async createProduct(request:Request, response:Response){
         try{
             const {name, quantity, color, sexModel, sizeId} = request.body;
-            
             const createInput:Prisma.ProductCreateInput={
                 name:name,
                 quantity:quantity,
                 color:color,
                 size:{
-                    connect:{
-                        id:sizeId
+                    connectOrCreate:{
+                        where:{
+                            id:sizeId
+                        },
+                        create:{
+                            id:sizeId,
+                        },
                     }
                 }
             }
@@ -70,8 +75,13 @@ export class ProductController{
                 quantity:quantity,
                 color:color,
                 size:{
-                    connect:{
-                        id:sizeId
+                    connectOrCreate:{
+                        where:{
+                            id:sizeId
+                        },
+                        create:{
+                            id:sizeId,
+                        },
                     }
                 }
             };
