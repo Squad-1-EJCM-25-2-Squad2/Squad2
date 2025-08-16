@@ -6,6 +6,9 @@
   transition: transform 0.2s;
   background-color: white;
   border: 1px solid #e0e0e0;
+  position: relative; 
+  
+
 }
 /*Definem o tamanho e o comportamento da imagem. O object-fit: cover garante que a imagem preencha o contêiner sem ser distorcida.*/
 .product-card:hover {
@@ -39,8 +42,8 @@
   font-size: 0.8em;
 }
 .product-info {
-  padding: 16px;
-  text-align: left;
+ padding: 16px;
+ text-align: left;
 }
 
 .product-name {
@@ -70,17 +73,31 @@
 }
 .original-price {
   text-decoration: line-through;
-  color: #777;
+  color: hsl(0, 0%, 47%);
   font-size: 0.9em;
 }
 
-.add-to-cart-button, .like-button {
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
+
+/* Botão Adicionar ao Carrinho */
 .add-to-cart-button {
-  background-color: black;
-  color: white;
-  border: none;
+  background-color: white;  /* Cor de fundo branca */
+  color: black;              /* Cor do texto preta */
+  border: 1px solid #ccc;    /* Adiciona uma borda sutil */
+  padding: 6px 10px;         /* Ajusta o tamanho do padding */
+  border-radius: 50px;       /* Borda redonda para o botão */
+  cursor: pointer;
+  
+  /* Posicionamento e alinhamento */
+  position: right;
+  bottom: 8px;
+  right: 8px;
+  
+  font-weight: bold;
+  font-size: 0.9em;
+ /* text-transform: uppercase;*/
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: #f0f0f0; /* Cor de fundo no hover */
 }

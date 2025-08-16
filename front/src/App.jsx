@@ -1,11 +1,20 @@
 //Importações
-import React from 'react';
+import React, { useState, useEffect } from 'react'; 
 import ProductCard from './components/ProductCard';
 import CategoryCard from './components/CategoryCard';
-import { products, categories } from './data';
+import { getProductsWithImages, getCategoriesWithImages } from './data'; 
 import './App.css';
 
 function App() {
+  const [productsWithImages, setProductsWithImages] = useState([]);
+  const [categoriesWithImages, setCategoriesWithImages] = useState([]);
+
+  useEffect(() => {
+    setProductsWithImages(getProductsWithImages());
+    setCategoriesWithImages(getCategoriesWithImages());
+  }, []);
+
+
   return (
 <div className="app-container">
       {/* SEÇÃO DE TÍTULO E SERVIÇOS */}
@@ -13,13 +22,13 @@ function App() {
 
         {/* Seção de Título */}
         <div className="header-section">
-          <h1 className="header-title">Estilo Redefinido!</h1>
+          <h1 className="header-title">Style Redefined!</h1>
           <p className="header-subtitle">
-            Descubra as últimas tendências da moda. Qualidade premium, materiais sustentáveis e designs atemporais!
+            Discorver the latest in fashion. Premium quality, sustainable materials, timeless designs.
           </p>
           <div className="header-buttons">
-            <button className="shop-now-button">Compre Agora</button>
-            <button className="view-collection-button">Veja a Coleção</button>
+            <button className="shop-now-button">Shop Now</button>
+            <button className="view-collection-button">View Collection</button>
           </div>
         </div>
       
@@ -28,27 +37,27 @@ function App() {
       <div className="services-section">
         <div className="service-item">
           <span className="service-icon">🚚</span>
-          <p className="service-text">Transporte Gratuito</p> 
-          <p className="section-subtitle">Entrega gratis para pedidos de até 100$</p>
+          <p className="service-text">Free Shipping</p> 
+          <p className="section-subtitle">Free shipping on orders over 100$</p>
         </div>
         <div className="service-item">
           <span className="service-icon">🔄</span>
-          <p className="service-text">Facil Devolução</p>
-          <p className="section-subtitle">Devolução gratis dentro de 30 dias</p>
+          <p className="service-text">Easy Returns</p>
+          <p className="section-subtitle">30-day hassle-free returns</p>
         </div>
         <div className="service-item">
           <span className="service-icon">🔒</span>
-          <p className="service-text">Pagamento Seguro</p>
-          <p className="section-subtitle">Seus dados de pagamentos estão seguros com a gente!</p>
+          <p className="service-text">Secure Payment</p>
+          <p className="section-subtitle">Your payment information is safe</p>
         </div>
       </div>
     </div>
       {/* Seção de Categorias */}
       <div className="shop-by-category">
-        <h2 className="section-title">Produtos por Categoria</h2>
-        <p className="section-subtitle">Exploque nossas coleções meticulosamente pensada para cada ocasião!</p>
+        <h2 className="section-title">Shop by Categoty</h2>
+        <p className="section-subtitle">Explore our carefully curated collections for every style and occasion</p>
         <div className="category-list">
-          {categories.map((category, index) => (
+          {categoriesWithImages.map((category, index) => ( 
             <CategoryCard key={index} category={category} />
           ))}
         </div>
@@ -56,14 +65,14 @@ function App() {
 
       {/* Seção de Produtos em Destaque */}
       <div className="featured-products">
-        <h2 className="section-title">Produtos de Destaque</h2>
-        <p className="section-subtitle">Favoritos da ultima coleção</p>
+        <h2 className="section-title">Featured Products</h2>
+        <p className="section-subtitle">Handpicked favorites from our latest collection</p>
         <div className="product-list">
-          {products.map(product => (
+          {productsWithImages.map(product => ( 
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-        <button className="load-more-button">Ver todos os produtos <span className="arrow-icon">→</span></button>
+        <button className="load-more-button">View All Products <span className="arrow-icon">→</span></button>
       </div>
     </div>
   );

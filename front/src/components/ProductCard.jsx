@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
               <span className="original-price">${product.originalPrice}</span>
             )}
           </div>
-            <button className="add-to-cart-button">Adicionar ao Carrinho</button>
+            <button className="add-to-cart-button">Add to Cart</button>
         </div>
       </div>
     </div>

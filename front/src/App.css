@@ -112,8 +112,9 @@ body {
 }
 .category-image-container {
   width: 100%;
-  height: 150px;
-  background-color: #eee;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.27);
+  aspect-ratio: 16 / 9;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,8 +136,8 @@ body {
   padding-bottom: 15px;
 }
 
-/* MEDIA QUERIES - ESTILOS PARA DISPOSITIVOS MÓVEIS */
-/* ------------------------------------------------------------- */
+/* ESTILOS PARA DISPOSITIVOS MÓVEIS */
+
 @media (max-width: 768px) {
   .app-container {
     padding: 20px 10px;
