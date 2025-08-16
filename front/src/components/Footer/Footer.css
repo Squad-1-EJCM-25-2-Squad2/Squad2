@@ -1,0 +1,87 @@
+.mainFooter {
+  background-color: #030711; 
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.tituloFooter h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.tituloFooter p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.5;
+  color: #d1d5db; 
+}
+
+.newsLetter {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.newsLetter input {
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  width: 260px;
+  background-color: rgb(243, 243, 243);
+  color: black;
+}
+
+.newsLetter button {
+  background-color: #e4e5e9;
+  color: rgb(3, 0, 0);
+  border: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.newsLetter button:hover {
+  background-color: #ffffff;
+}
+
+
+@media (max-width: 767px) {
+  .newsLetter button {
+    width: 100%;
+    max-width: 300px; 
+    height: 44px;
+    border-radius: 10px;
+    padding: 0;
+    font-size: 14px;
+    margin: 0 auto; /
+    display: block;
+  }
+
+  .newsLetter input {
+    width: 100%;
+    max-width: 300px; /* tamanho máximo para manter parecido com a imagem */
+    height: 44px;
+    border-radius: 10px;
+    padding: 0 12px;
+    font-size: 14px;
+    margin: 0 auto; /* centraliza */
+    display: block;
+  }
+}
+
+    
+  
+
+
+
+
+
+
