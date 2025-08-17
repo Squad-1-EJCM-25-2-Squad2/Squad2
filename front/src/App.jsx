@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react'; 
 import ProductCard from './components/ProductCard';
 import CategoryCard from './components/CategoryCard';
+import Header from './components/Header/Header.tsx';
+import Footer from './components/Footer/Footer.tsx';
 import { getProductsWithImages, getCategoriesWithImages } from './data'; 
 import './App.css';
 
@@ -17,6 +19,9 @@ function App() {
 
   return (
 <div className="app-container">
+  {/* Header do projeto */}
+      <Header />
+
       {/* SEÇÃO DE TÍTULO E SERVIÇOS */}
       <div className="hero-and-services-section">
 
@@ -74,6 +79,8 @@ function App() {
         </div>
         <button className="load-more-button">View All Products <span className="arrow-icon">→</span></button>
       </div>
+        {/* Footer do projeto */}
+      <Footer />
     </div>
   );
 }
