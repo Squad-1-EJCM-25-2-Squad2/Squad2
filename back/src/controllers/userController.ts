@@ -29,7 +29,7 @@ export class UserController{
 
             const fullInformation ={
                 token,
-                userData
+                userData,
             }
             response.status(201).json(fullInformation);
             
