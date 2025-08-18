@@ -5,7 +5,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['Segoe UI', 'ui-sans-serif', 'system-ui', /* ...other fallbacks... */],
+    },
   },
   plugins: [],
 }
