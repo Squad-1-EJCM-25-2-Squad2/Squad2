@@ -1,0 +1,148 @@
+import { Prisma, PrismaClient } from "@prisma/client";
+import { Request, Response } from "express";
+import { connect } from "http2";
+import { create } from "domain";
+
+const prisma = new PrismaClient();
+
+export class AnnounceController {
+    public static async createAnnounce(request: Request, response: Response) {
+        try {
+            const { description, price, productId, idCategory } = request.body;
+
+            const createInput: Prisma.AnnounceCreateInput = {
+                description: description,
+                price: price,
+                productId: {
+                    connect: {
+                        id: productId
+                    }
+                },
+                idCategory: {
+                    connect: {
+                        id: idCategory,
+                        connectOrCreate: {
+                            where: {
+                                id: idCategory
+                            },
+                            create: {
+                                id: idCategory,
+                            },
+                        }
+                    }
+                }
+            }
+
+            const createdAnnounce = await prisma.announce.create({
+                data: createInput
+            });
+
+            response.status(201).json(createdAnnounce);
+        } catch (error: any) {
+            response.status(500).json({ message: error.message });
+        }
+    }
+
+    public static async readAnnounce(request: Request, response: Response) {
+        try {
+           const {id} = request.params;
+            const integerId=parseInt(id);
+            const foundAnnounce = await prisma.announce.findUnique({
+                where:{
+                    id: integerId
+                },
+            });
+
+            response.status(200).json(foundAnnounce)
+        } catch (error: any) {
+            response.status(500).json({ message: error.message });
+        }
+    }
+
+    public static async readAllAnnounces(request: Request, response: Response) {
+        try {
+            const foundAnnounces = await prisma.announce.findMany();
+            response.status(200).json(foundAnnounces)
+        } catch (error: any) {
+            response.status(500).json({ message: error.message });
+        }
+    }
+    
+    public static async updateAnnounce(request: Request, response: Response) {
+        try {
+            const { description, price, productId, idCategory } = request.body;
+            const {id} = request.params
+            const integerId = parseInt(id)
+
+            const createInput: Prisma.AnnounceCreateInput = {
+                description: description,
+                price: price,
+                productId: {
+                    connect: {
+                        id: productId
+                    }
+                },
+                idCategory: {
+                    connect: {
+                        id: idCategory,
+                        connectOrCreate: {
+                            where: {
+                                id: idCategory
+                            },
+                            create: {
+                                id: idCategory,
+                            },
+                        }
+                    }
+                }
+            }
+
+            const updatedAnnounce = await prisma.announce.create({
+                data: createInput
+            });
+
+            response.status(201).json(updatedAnnounce);
+        } catch (error: any) {
+            response.status(500).json({ message: error.message });
+        }
+    }
+
+    public static async deleteAnnounce(request: Request, response: Response) {
+        try {
+            const {id} = request.params;
+            const integerId=parseInt(id);
+            const deletedAnnounce = await prisma.announce.delete({
+                where:{
+                    id: integerId
+                },
+            });
+
+            response.status(204).json(deletedAnnounce);
+        } catch (error: any) {
+            response.status(500).json({ message: error.message });
+        }
+    }
+
+    public static async uploadAnnouncePhoto(request: Request, response: Response){
+        try {
+            const {id} = request.params;
+            const integerId=parseInt(id);
+            const file = request.file;
+
+            const image = file ? `/uploads/photos/${file.filename}` : undefined
+
+            const updatedAnnounce = await prisma.announce.update({
+                where: {
+                    id: integerId
+                },
+                data: {
+                    image: image
+                }
+            });
+
+            response.status(200).json(updatedAnnounce);
+        } catch (error: any) {
+            response.status(500).json({ message: error.message });
+        }
+    }
+}
