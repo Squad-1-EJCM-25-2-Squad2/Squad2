@@ -1,4 +1,3 @@
-/* Estilos básicos do cartão, como borda, sombra e transição. O :hover adiciona o efeito de "subir" quando o mouse passa por cima.*/
 .product-card {
   border-radius: 8px;
   overflow: hidden;
