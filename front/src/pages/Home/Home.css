@@ -1,0 +1,251 @@
+body {
+  background-color: white;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+/* Estilos para a nova seção de cabeçalho */
+.header-section {
+  width: 100%;
+  text-align: center;
+  padding: 60px 0;
+  margin-bottom: 60px;
+}
+.header-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.header-subtitle {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+.header-buttons button {
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 1em;
+}
+.shop-now-button {
+  background-color: black;
+  color: white;
+  border: none;
+}
+.learn-more-button {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ccc;
+}
+/* Estilos gerais para seções de produtos e categorias */
+.services-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+.service-item {
+  flex-basis: 30%;
+  padding: 20px;
+}
+.service-icon {
+  font-size: 2em;
+}
+.service-text {
+  font-weight: bold;
+  margin-top: 10px;
+}
+.shop-by-category, .featured-products {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.section-subtitle {
+  color: #777;
+  margin-bottom: 30px;
+}
+/* Grid para listas */
+.category-list, .product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  justify-items: center; /* Centraliza cada card dentro do grid */
+}
+/* Estilos dos cards */
+.product-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  position: relative;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-image-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-tags {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 5px;
+}
+.tag-best-seller, .tag-new, .tag-sale, .tag-premium {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+.product-info {
+  padding: 16px;
+  text-align: left;
+}
+.product-name {
+  font-size: 1.1em;
+  margin: 8px 0;
+}
+.product-rating {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 8px;
+}
+.price-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.price-info {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.current-price {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333;
+}
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9em;
+}
+.add-to-cart-button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.add-to-cart-button:hover {
+  background-color: #444;
+}
+.load-more-button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.load-more-button .arrow-icon {
+  margin-left: 5px;
+}
+/* Estilos para os cards de Categoria */
+.category-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+}
+.category-card:hover {
+  transform: scale(1.03);
+}
+.category-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Redimensiona a imagem para caber no contêiner mantendo a proporção */
+}
+.category-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+}
+.category-name {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0 0 5px 0;
+  color: inherit;
+}
+.category-item-count {
+  font-size: 0.9em;
+  color: inherit;
+  margin: 0;
+}
+/* ESTILOS PARA DISPOSITIVOS MÓVEIS */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 20px 10px;
+  }
+  .services-section {
+    flex-direction: column;
+  }
+  .service-item {
+    flex-basis: 100%;
+  }
+  .category-list, .product-list {
+    grid-template-columns: 1fr;
+  }
+}
