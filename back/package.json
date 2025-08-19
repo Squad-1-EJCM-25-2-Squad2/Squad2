@@ -8,13 +8,15 @@
     "keys": "npx ts-node src/config/generateRSA.ts"
   },
   "prisma": {
-    "schema": "src/models/schema.prisma"
+    "schema": "src/models/schema.prisma",
+    "seed":"ts-node src/models/seed/seeder.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "@prisma/client": "^6.13.0",
     "@types/express": "^5.0.3",
     "cors": "^2.8.5",
@@ -30,6 +32,7 @@
     "@types/multer": "^2.0.0",
     "@types/passport": "^1.0.17",
     "@types/passport-jwt": "^4.0.1",
+    "faker": "^5.5.3",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
     "passport": "^0.7.0",
