@@ -89,19 +89,18 @@ model Favorites {
 
 model Product {
   id       Int     @id @default(autoincrement())
-  name     String
+  name     String  @unique
   quantity Int
   color    String
   sexModel String?
 
-  sizeId   Int
+  sizeId   String
   size     Size       @relation(fields: [sizeId], references: [id])
   Announce Announce[]
 }
 
 model Size {
-  id      Int       @id @default(autoincrement())
-  size    String    @unique
+  id      String       @id
   Product Product[]
 }
 
