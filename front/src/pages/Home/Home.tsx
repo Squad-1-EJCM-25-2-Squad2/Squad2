@@ -51,9 +51,9 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    
+<>
+      <Header />
       <div className="app-container">
-        <Header />
         
         {/* Capa do projeto */}
         <header className="header-section">
@@ -108,9 +108,9 @@ const Home: React.FC = () => {
           </div>
           <button className="load-more-button">View All Products <span className="arrow-icon">→</span></button>
         </div>
-         <Footer />
-
       </div>
+<Footer />
+    </>
   );
 };
 
