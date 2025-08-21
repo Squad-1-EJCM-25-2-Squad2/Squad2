@@ -5,14 +5,15 @@ import { authenticate } from "../middlewares/authentication";
 import { FavoritesController } from "../controllers/favoritesController";
 import { photoUpload } from "../config/uploader";
 import { AnnounceController } from "../controllers/announceController";
-
+import { validateBody, validateParams } from "../middlewares/validate";
+import userValidator from "../schemas/userValidator";
 
 const router = Router();
 
 // rotas de teste do usuario
-router.post("/user",UserController.createUser);
+router.post("/user",validateBody(userValidator.createUser),UserController.createUser);
 router.get("/user/:id",authenticate,UserController.readUser);
-router.put("/user/:id",authenticate,UserController.updateUser);
+router.put("/user/:id",authenticate,validateParams(userValidator.userId),validateBody(userValidator.updateUser),UserController.updateUser);
 router.delete("/user/:id",authenticate,UserController.deleteUser);
 router.post("/login",UserController.login);
 

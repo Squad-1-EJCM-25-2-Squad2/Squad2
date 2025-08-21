@@ -9,7 +9,7 @@
   },
   "prisma": {
     "schema": "src/models/schema.prisma",
-    "seed":"ts-node src/models/seed/seeder.ts"
+    "seed": "ts-node src/models/seed/seeder.ts"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
     "passport": "^0.7.0",
-    "passport-jwt": "^4.0.1"
+    "passport-jwt": "^4.0.1",
+    "zod": "^4.0.17"
   }
 }
