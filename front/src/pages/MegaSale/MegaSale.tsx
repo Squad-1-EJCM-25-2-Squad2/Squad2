@@ -1,6 +1,6 @@
-import './Main.css';
+import './MegaSale.css';
 
-const Main = () => {
+const MegaSale = () => {
   
   const products = [
     { id: 1, category: 'Tops', name: 'Premium Cotton T-Shirt', rating: 4.8, reviews: 124, price: 29, oldPrice: 49, discount: '-41%', tag: 'Limited Time' },
@@ -155,20 +155,10 @@ const Main = () => {
           </div>
         </section>
       </main>
-
    
-      <footer className="footer-subscribe">
-        <div className="footer-content">
-          <h3>Don't Miss Future Sales!</h3>
-          <p>Subscribe to our newsletter and be the first to know about exclusive sales and special offers.</p>
-          <div className="subscribe-form">
-            <input type="email" placeholder="Enter your email" />
-            <button type="submit">Subscribe</button>
-          </div>
-        </div>
-      </footer>
+    
     </>
   );
 };
 
-export default Main;
+export default MegaSale;
