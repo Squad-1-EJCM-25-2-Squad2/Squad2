@@ -9,7 +9,7 @@
   },
   "prisma": {
     "schema": "src/models/schema.prisma",
-    "seed":"ts-node src/models/seed/seeder.ts"
+    "seed": "ts-node src/models/seed/seeder.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +24,6 @@
     "express": "^5.1.0",
     "prisma": "^6.13.0",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"
   },
   "dependencies": {
@@ -36,6 +35,7 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
     "passport": "^0.7.0",
-    "passport-jwt": "^4.0.1"
+    "passport-jwt": "^4.0.1",
+    "sqlite3": "^5.1.7"
   }
 }

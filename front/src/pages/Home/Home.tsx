@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import ProductCard from '../../components/ProductCard/ProductCard.tsx';
+import api from '../../services/api.ts';
 import CategoryCard from '../../components/CategoryCard/CategoryCard.tsx';
 import Footer from '../../components/Footer/Footer.tsx';
 import Header from '../../components/Header/Header.tsx';
@@ -50,68 +51,77 @@ const Home: React.FC = () => {
     setCategories(categoriesData);
   }, []);
 
-  return (
-<>
-      <Header />
-      <div className="app-container">
-        
-        {/* Capa do projeto */}
-        <header className="header-section">
-          <h1 className="header-title">Style Redefined!</h1>
-          <p className="header-subtitle">
-            Discover the latest in fashion. Premium quality, sustainable materials, timeless designs.
-          </p>
-          <div className="header-buttons">
-            <button className="shop-now-button">Shop Now</button>
-            <button className="view-collection-button">View Collection</button>
-          </div>
-        </header>
+return (
+  <>
+    <Header />
 
-        {/* SECAO DE SERVICOS */}
-        <div className="services-section">
-          <div className="service-item">
-            <span className="service-icon">🚚</span>
-            <p className="service-text">Fast & Free Shipping</p>
-            <p className="section-subtitle">On all orders over $150</p>
-          </div>
-          <div className="service-item">
-            <span className="service-icon">🔄</span>
-            <p className="service-text">Easy Returns</p>
-            <p className="section-subtitle">30-day hassle-free returns</p>
-          </div>
-          <div className="service-item">
-            <span className="service-icon">🔒</span>
-            <p className="service-text">Secure Payment</p>
-            <p className="section-subtitle">Your payment information is safe</p>
-          </div>
+    <div className="app-container">
+      {/* Capa do projeto */}
+      <header className="header-section">
+        <h1 className="header-title">Style Redefined!</h1>
+        <p className="header-subtitle">
+          Discover the latest in fashion. Premium quality, sustainable materials, timeless designs.
+        </p>
+        <div className="header-buttons">
+          <button className="shop-now-button">Shop Now</button>
+          <button className="view-collection-button">View Collection</button>
         </div>
+      </header>
 
-        {/* Secao de Categorias */}
-        <div className="shop-by-category">
-          <h2 className="section-title">Shop by Category</h2>
-          <p className="section-subtitle">Explore our carefully curated collections for every style and occasion</p>
-          <div className="category-list">
-            {categories.map((category, index) => ( 
-              <CategoryCard key={index} category={category} />
-            ))}
-          </div>
+      {/* SECAO DE SERVICOS */}
+      <div className="services-section">
+        <div className="service-item">
+          <span className="service-icon">🚚</span>
+          <p className="service-text">Fast & Free Shipping</p>
+          <p className="section-subtitle">On all orders over $150</p>
         </div>
-
-        {/* Secao de Produtos em Destaque */}
-        <div className="featured-products">
-          <h2 className="section-title">Featured Products</h2>
-          <p className="section-subtitle">Handpicked favorites from our latest collection</p>
-          <div className="product-list">
-            {products.map(product => ( 
-              <ProductCard key={product.id} product={product} /> 
-            ))}
-          </div>
-          <button className="load-more-button">View All Products <span className="arrow-icon">→</span></button>
+        <div className="service-item">
+          <span className="service-icon">🔄</span>
+          <p className="service-text">Easy Returns</p>
+          <p className="section-subtitle">30-day hassle-free returns</p>
+        </div>
+        <div className="service-item">
+          <span className="service-icon">🔒</span>
+          <p className="service-text">Secure Payment</p>
+          <p className="section-subtitle">Your payment information is safe</p>
         </div>
       </div>
-<Footer />
-    </>
-  );
-};
+
+      {/* Secao de Categorias */}
+      <div className="shop-by-category">
+        <h2 className="section-title">Shop by Category</h2>
+        <p className="section-subtitle">
+          Explore our carefully curated collections for every style and occasion
+        </p>
+        <div className="category-list">
+          {categories.map((category, index) => ( 
+            <CategoryCard key={index} category={category} />
+          ))}
+        </div>
+      </div>
+
+      {/* Secao de Produtos em Destaque */}
+      <div className="featured-products">
+        <h2 className="section-title">Featured Products</h2>
+        <p className="section-subtitle">Handpicked favorites from our latest collection</p>
+        <div className="product-list">
+          {products.map(product => ( 
+            <ProductCard key={product.id} product={product} /> 
+          ))}
+        </div>
+        <button className="load-more-button">
+          View All Products <span className="arrow-icon">→</span>
+        </button>
+      </div>
+    </div>
+
+    <Footer  
+      title="Minha loja" 
+      text="Todos os direitos reservados © 2025" 
+      backgroundColor="preto" 
+    />
+  </>
+);
+}
 
 export default Home;
