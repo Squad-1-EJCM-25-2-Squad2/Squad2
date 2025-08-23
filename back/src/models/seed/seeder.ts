@@ -1,16 +1,17 @@
 
 import { PrismaClient } from "@prisma/client";
 import { userSeeder } from "./userSeeder";
-import { announceSeeder } from "./announceSeeder";
 import { productSeeder } from "./productSeeder";
+import { announceSeeder } from "./announceSeeder";
+
 
 const prisma = new PrismaClient();
 
 async function main() {
 	await prisma.$connect();
-	await userSeeder(prisma,20);
-	await productSeeder(prisma,20);
-	await announceSeeder(prisma,20);
+	userSeeder(prisma,20);
+	productSeeder(prisma, 20);
+	announceSeeder(prisma, 20);
 
 }
 
