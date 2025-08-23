@@ -6,6 +6,15 @@
   font-family: Arial, sans-serif;
 }
 
+.roxo {
+  background: linear-gradient(to right, #c1414e, #8b2c6e);
+
+}
+
+.preto {
+  background-color: black;
+}
+
 .tituloFooter h1 {
   font-size: 48px;
   font-weight: bold;
@@ -53,27 +62,26 @@
 }
 
 
+
+
 @media (max-width: 767px) {
-  .newsLetter button {
-    width: 100%;
-    max-width: 300px; 
-    height: 44px;
-    border-radius: 10px;
-    padding: 0;
-    font-size: 14px;
-    margin: 0 auto; /
-    display: block;
+ 
+  .newsLetter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+    width: 100%; 
+    align-items: center; 
   }
 
-  .newsLetter input {
+  .newsLetter input,
+  .newsLetter button {
     width: 100%;
-    max-width: 300px; /* tamanho máximo para manter parecido com a imagem */
+    max-width: 300px;
     height: 44px;
     border-radius: 10px;
-    padding: 0 12px;
     font-size: 14px;
-    margin: 0 auto; /* centraliza */
-    display: block;
+    
   }
 }
 
