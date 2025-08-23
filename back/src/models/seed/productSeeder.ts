@@ -1,8 +1,10 @@
+productSeeder
+
 import { PrismaClient } from "@prisma/client";
 import { fakerPT_BR } from "@faker-js/faker"
+import { json } from "zod";
 
 export async function productSeeder(prisma: PrismaClient, numProducts: number) {
-    const products = [];
     const sexOptions = ['Masculino', 'Feminino', 'Indefinido'];
     const sizeOptions = ['XS', 'S', 'M', 'L', 'XL',
          '6', '7', '8', '9', '10',
@@ -10,19 +12,29 @@ export async function productSeeder(prisma: PrismaClient, numProducts: number) {
            '34', '36'
         ]
 
-    for (let i = 0; i < numProducts; i++) {
-        products.push({
-            name: fakerPT_BR.commerce.product(),
-            quantity: fakerPT_BR.number.int({ min: 0, max: 200 }),
-            color: fakerPT_BR.color(),
-            sexModel: fakerPT_BR.helpers.arrayElement(sexOptions),
-            size: fakerPT_BR.helpers.arrayElement(sizeOptions),
-        });
-    }
+    const sizeObjects = sizeOptions.map((size) => ({
+        id: size
+    }));
 
-    await prisma.product.createMany({
-        data: products,
+    await prisma.size.createMany({
+        data:sizeObjects,
         skipDuplicates: true,
     });
 
+    for (let i = 0; i < numProducts; i++) {
+        await prisma.product.create({
+            data:{
+                name: fakerPT_BR.commerce.product(),
+                quantity: fakerPT_BR.number.int({ min: 0, max: 200 }),
+                color: fakerPT_BR.color.human(),
+                sexModel: fakerPT_BR.helpers.arrayElement(sexOptions),
+                size:{
+                    connect:{id:fakerPT_BR.helpers.arrayElement(sizeOptions)}
+                } ,
+            }
+
+        });
+    }
+
 }
+
